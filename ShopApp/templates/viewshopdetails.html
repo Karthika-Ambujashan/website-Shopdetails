@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+      <div class="row">
+    <table class="table table-bordered mt-5">
+        <thead>
+          <tr>
+            <th scope="col">Shopname</th>
+            <th scope="col">Shoplocation</th>
+            <th scope="col">Shopcontactno</th>
+            <th scope="col">Shop image</th>
+            <th>EDIT</th>
+            <th>DELETE</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+          <tr>
+            <td>{{i.shopname}}</td>
+            <td>{{i.shoplocation}}</td>
+            <td>{{i.shopcontactno}}</td>
+            <td><img src="{{i.shop_image.url}}" style="width:60px; height:60px"></td>
+            <td><a href= "{% url 'edit' sid=i.id %}"><button class="btn btn-success">EDIT</button></a></td>
+            <td><a href= "{% url 'delete' sid=i.id %}"><button class="btn btn-danger">DELETE</button></a></td>
+          </tr>  
+          {% endfor %}
+        </tbody>
+        </table>
+        </div> 
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>       
+</body>
+</html>
